@@ -1,0 +1,26 @@
+<div class="login-page">
+    <h4>Please Enter Login Info</h4>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label for="username">Username</mat-label>
+            <input matInput type="text" [formControl]="username" autocomplete="off" />
+            <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                <mat-error *ngIf="username.errors.required">Username is required</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="password">Password</mat-label>
+            <input matInput type="password" [formControl]="password" />
+            <mat-error *ngIf="password.errors">
+                <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <div>
+            <button id="login-btn" mat-raised-button color="accent" [disabled]="loading">
+                <span *ngIf="loading" class="loading"></span>
+                <span>Login</span>
+            </button>
+        </div>
+    </form>
+</div>
+<button class="back" mat-stroked-button color="primary" [routerLink]="['/']" routerLinkActive="true" >Back</button>

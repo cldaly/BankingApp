@@ -1,0 +1,77 @@
+{
+    "Users": [
+        {
+            "id": 0,
+            "name": "Admin",
+            "username": "admin",
+            "password": "admin",
+            "email": "admin@domain.com",
+            "address": null,
+            "account": null,
+            "status": "admin",
+            "balance": null,
+            "numOfChecks": null,
+            "token": null
+        },
+        {
+            "id": 1,
+            "name": "Clayton Daly",
+            "username": "clay",
+            "password": "password",
+            "email": "clay@domain.com",
+            "address": "Atlanta, GA",
+            "account": "checking",
+            "status": "open",
+            "balance": 10000.00,
+            "numOfChecks": 20,
+            "token": null
+        },
+        {
+            "id": 2,
+            "name": "Patrick Daly",
+            "username": "pat",
+            "password": "password",
+            "email": "pat@domain.com",
+            "address": "Oakland, CA",
+            "account": "savings",
+            "status": "pending",
+            "balance": 20000.00,
+            "numOfChecks": 0,
+            "token": null
+        }
+    ],
+    "Transactions": [
+        {
+            "transId":1,
+            "userId" : 2,
+            "type": "deposit",
+            "amount": 500.00,
+            "status": "cleared",
+            "timestamp":null
+        },
+        {
+            "transId":2,
+            "userId" : 1,
+            "type": "withdrawl",
+            "amount": -500.00,
+            "status": "stopped",
+            "timestamp":null
+        },
+        {
+            "transId":3,
+            "userId" : 1,
+            "type": "transfer-out",
+            "amount": -500.00,
+            "status": "cleared",
+            "timestamp":null
+        },
+        {
+            "transId":4,
+            "userId" : 2,
+            "type": "transfer-in",
+            "amount": 500.00,
+            "status": "cleared",
+            "timestamp":null
+        }
+    ]
+}
