@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { SigninComponent } from './signin/signin.component';
+import { LandingComponent } from './landing/landing.component';
 import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { AuthenticationService } from './services/authentication.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SigninComponent
+    LandingComponent
   ],
   imports: [
     BrowserModule,

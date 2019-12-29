@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +12,18 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading:boolean = false;
+  loading:boolean;
 
   username:FormControl;
   password:FormControl;
 
   invalid:boolean;
 
-  constructor(private auth:AuthenticationService) { }
+  constructor(
+      private auth:AuthenticationService, 
+      private router:Router,
+      private app:AppComponent
+    ) { }
 
   ngOnInit() {
     this.username = new FormControl('',Validators.required);
@@ -26,7 +32,7 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     });
-
+    this.loading = false;
     this.invalid = false;
   }
 
@@ -36,8 +42,10 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(data => {
         if (data) {
-          console.log(data);
+          this.app.message = "You have been logged in!"
+          this.router.navigate(['/']);
         } else {
+          this.app.message = null;
           this.invalid = true;
           this.loginForm.reset;
         }
