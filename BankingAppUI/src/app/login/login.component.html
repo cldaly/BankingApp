@@ -1,3 +1,7 @@
+<div *ngIf="invalid" class="invalid" (click)="close()">
+    <p>Invalid Username or Password</p>
+    <i class="material-icons">close</i>
+</div>
 <div class="login-page">
     <h4>Please Enter Login Info</h4>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

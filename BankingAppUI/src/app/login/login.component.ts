@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,13 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading:boolean = false;
-  submitted:boolean = false;
 
   username:FormControl;
   password:FormControl;
 
-  constructor() { }
+  invalid:boolean;
+
+  constructor(private auth:AuthenticationService) { }
 
   ngOnInit() {
     this.username = new FormControl('',Validators.required);
@@ -23,16 +26,27 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     });
-  }
 
+    this.invalid = false;
+  }
 
   onSubmit(){
-    console.log(this.loginForm.value);
-    this.submitted = true;
     if (this.loginForm.valid){
       this.loading = true;
+      this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe(data => {
+        if (data) {
+          console.log(data);
+        } else {
+          this.invalid = true;
+          this.loginForm.reset;
+        }
+      });
+      this.loading = false;
     }
-    
   }
 
+  close(){
+    this.invalid = false;
+  }
 }
