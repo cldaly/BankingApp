@@ -59,6 +59,8 @@ export class RegisterComponent implements OnInit {
         this.registerForm.value.address, 
         this.registerForm.value.account
       );
+
+      // TODO - Complete user registration
       console.log(newUser);
     }
     this.loading = false;
