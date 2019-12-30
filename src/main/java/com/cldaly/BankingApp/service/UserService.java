@@ -23,8 +23,8 @@ public class UserService {
 	}
 	
 	// Add a new user to database
-	public void saveUser(User user) {
-		userRepo.save(user);
+	public User saveUser(User user) {
+		return userRepo.save(user);
 	}
 	
 	// authenticate user

@@ -1,5 +1,6 @@
 <div class="landing-page">
-  <div *ngIf="!app.currentUser; else loggedIn">
+  <h1>Welcome to My Banking App</h1>
+  <div *ngIf="!currentUser; else loggedIn">
     <h4>Get started by selecting from the following</h4>
     <div class="loginButtons">
       <button [routerLink]="['/login']" routerLinkActive="true" mat-raised-button color="primary">Sign In</button>
@@ -7,6 +8,7 @@
     </div>
   </div>
   <ng-template #loggedIn>
-    <h4>Logged In!</h4>
+    <h4>You Have Been Logged In!</h4>
+    <button [routerLink]="['/home']" routerLinkActive="true" >Home</button>
   </ng-template>
 </div>

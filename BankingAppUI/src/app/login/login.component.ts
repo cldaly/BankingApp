@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
-import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 
@@ -17,6 +16,7 @@ export class LoginComponent implements OnInit {
   username:FormControl;
   password:FormControl;
 
+  message:string;
   invalid:boolean;
 
   constructor(
@@ -47,8 +47,11 @@ export class LoginComponent implements OnInit {
         } else {
           this.app.message = null;
           this.invalid = true;
-          this.loginForm.reset;
+          this.message = "Invalid Username or Password";
         }
+      }, error => {
+        this.invalid = true;
+        this.message = "Something Went Wrong...";
       });
       this.loading = false;
     }
@@ -56,5 +59,6 @@ export class LoginComponent implements OnInit {
 
   close(){
     this.invalid = false;
+    this.message = null;
   }
 }

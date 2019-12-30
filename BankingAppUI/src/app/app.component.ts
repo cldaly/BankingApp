@@ -14,7 +14,9 @@ export class AppComponent {
   message:string = null;
 
   constructor(private router:Router, private auth:AuthenticationService){
-    this.auth.currentUser.subscribe(user => this.currentUser = user);
+    this.auth.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   logout(){
