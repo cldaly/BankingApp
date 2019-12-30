@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(data => {
         if (data) {
-          this.app.message = "You have been logged in!"
+          this.app.message = "You have been logged in!";
           this.router.navigate(['/']);
         } else {
           this.app.message = null;

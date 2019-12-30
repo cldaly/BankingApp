@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cldaly.BankingApp.model.RegisterStatus;
 import com.cldaly.BankingApp.model.User;
 import com.cldaly.BankingApp.repository.UserRepository;
 
@@ -23,8 +24,16 @@ public class UserService {
 	}
 	
 	// Add a new user to database
-	public User saveUser(User user) {
-		return userRepo.save(user);
+	public RegisterStatus saveUser(User user) {
+		List<User> users = this.getUserList();
+		for (User u : users) {
+			if (user.getEmail().equals(u.getEmail())) 
+				return new RegisterStatus(false, "Email '" +user.getEmail()+ "'  already taken");
+			if (user.getUsername().equals(u.getUsername()))
+				return new RegisterStatus(false, "Username '" + user.getUsername() + "' already taken");
+		}
+		userRepo.save(user);
+		return new RegisterStatus(true, "Success!");
 	}
 	
 	// authenticate user

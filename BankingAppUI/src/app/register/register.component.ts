@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { PasswordMatch } from '../_helpers/pass-match.validator';
 import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
       private auth:AuthenticationService, 
       private router:Router,
       private app:AppComponent,
-      private formBuilder:FormBuilder
+      private formBuilder:FormBuilder,
+      private userService:UserService
   ) { }
 
   ngOnInit() {
@@ -59,9 +61,20 @@ export class RegisterComponent implements OnInit {
         this.registerForm.value.address, 
         this.registerForm.value.account
       );
-
-      // TODO - Complete user registration
-      console.log(newUser);
+      this.userService.register(newUser).subscribe(data => {
+        if (data.registered) {
+          this.auth.login(newUser.username, newUser.password);
+          this.app.message="You have been registered!";
+          this.router.navigate(['/home']);
+        } else {
+          this.invalid = true;
+          this.message = data.message;
+        }
+      }, error => {
+        console.log(error);
+        this.invalid = true;
+        this.message = "Something went wrong";
+      })
     }
     this.loading = false;
     // this.loading = true;

@@ -12,8 +12,6 @@ export class UserService {
   constructor(private http:HttpClient, private auth:AuthenticationService) { }
 
   register(user:User) {
-    return this.http.post<any>('http://localhost:8080/users', user).pipe(map(u => {
-      return this.auth.login(u.username, u.password);
-    }));
+    return this.http.post<any>('http://localhost:8080/users', user);
   }
 }
