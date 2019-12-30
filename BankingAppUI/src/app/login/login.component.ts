@@ -23,7 +23,12 @@ export class LoginComponent implements OnInit {
       private auth:AuthenticationService, 
       private router:Router,
       private app:AppComponent
-    ) { }
+    ) { 
+      // redirect to home if already logged in
+      if (this.auth.currentUserValue) { 
+        this.router.navigate(['/']);
+      }
+    }
 
   ngOnInit() {
     this.username = new FormControl('',Validators.required);
