@@ -2,6 +2,7 @@ package com.cldaly.BankingApp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,11 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	// Get a user by id
+	public Optional<User> getUserById(Long id) {
+		return userRepo.findById(id);
+	}
 	
 	// Get a list of all users
 	public List<User> getUserList() {

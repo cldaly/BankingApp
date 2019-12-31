@@ -19,7 +19,8 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.currentUser && this.currentUser.status === 'admin' ) {
+    console.log(this.currentUser);
+    if (this.currentUser && this.currentUser.account === 'admin' ) {
       this.router.navigate(['/admin']);
     } else if (this.currentUser) {
       this.router.navigate(['/home']);
