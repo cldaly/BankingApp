@@ -6,3 +6,38 @@
     margin: 20px auto;
     width: 500px;
 }
+
+.user-actions {
+    /* border: 1px solid #a6acbc; */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    width: 500px;
+    margin: 40px auto;
+    padding: 0 25px 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.15);
+}
+
+.user-actions tr {
+    align-items: center;
+}
+
+.user-actions td {
+    font-size: 0.9em;
+    padding: 10px 15px;
+}
+
+.user-actions .action-head {
+    text-align: left;
+    font-size: 1.1em;
+    padding: 25px 5px 5px;
+}
+
+.user-actions button {
+    padding: 0 25px;
+    width: 175px;
+}
+
+.user-actions .user-value {
+    padding-left: 25px;
+    text-align: left;
+}

@@ -1,9 +1,37 @@
 <div class="home">
-    <h2>Welcome to My Banking App, {{ currentUser.name }}</h2>
+    <h2>Welcome to My Banking App, {{ currentUser.name }}!</h2>
     <div *ngIf="currentUser.status === 'open'; then open else notOpen"></div>
     <ng-template #open>
-        <table>
-            
+        <table class="user-actions">
+            <tr>
+                <td colspan="2" class="action-head">How can we help you today?</td>
+            </tr>
+            <tr>
+                <td><button mat-raised-button color="accent">Make a Deposit</button></td>
+                <td><button mat-raised-button color="accent">Make a Withdrawl</button></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="action-head">Your {{currentUser.account}} account</td>
+            </tr>
+            <tr>
+                <td class="user-value">Balance: {{ currentUser.balance | currency:'USD' }}</td>
+                <td><button mat-button color="primary">View Transactions</button></td>
+            </tr>
+            <tr *ngIf="currentUser.account === 'checking'">
+                <td class="user-value">Number of Checks: {{ currentUser.numOfChecks }}</td>
+                <td><button mat-button color="primary">Order More Checks</button></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="action-head">Other options</td>
+            </tr>
+            <tr>
+                <td><button mat-stroked-button color="primary">Make a Transfer</button></td>
+                <td><button mat-stroked-button color="primary">Ask a Question</button></td>
+            </tr>
+            <tr>
+                <td><button mat-stroked-button color="primary">Edit Account</button></td>
+                <td><button mat-stroked-button color="primary">Stop Payment</button></td>
+            </tr>
         </table>
     </ng-template>
     <ng-template #notOpen>
