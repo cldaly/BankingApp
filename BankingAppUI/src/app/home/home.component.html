@@ -1,5 +1,4 @@
 <div class="home">
-    <h2>Welcome to My Banking App, {{ currentUser.name }}!</h2>
     <div *ngIf="currentUser.status === 'open'; then open else notOpen"></div>
     <ng-template #open>
         <table class="user-actions">

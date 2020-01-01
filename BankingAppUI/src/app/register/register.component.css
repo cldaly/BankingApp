@@ -10,20 +10,21 @@
     background-color: #fff;
     border-radius: 10px;
     border: 1px solid #777;
-    width: 450px;
-    padding: 20px 20px;
+    width: 550px;
+    padding: 30px 30px;
 }
 
 mat-form-field {
-    font-size: 0.95em;
-    width: 250px;
+    font-size: 1em;
+    width: 300px;
 }
 
 .register-page h4 {
     color: #555;
     margin: 0 10px;
     font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
     text-align: left;
     padding-left: 25px;
     padding-bottom: 10px;;
@@ -67,7 +68,7 @@ mat-form-field {
     background-color: #ffb3ab;
     color: #570000;
     border-radius: 10px;
-    width: 450px;
+    width: 500px;
     display: flex;
     flex-direction: row;
     align-items: center;

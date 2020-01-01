@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       private userService:UserService
   ) { 
     if (this.auth.currentUserValue) { 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/bank']);
     }
   }
 
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
         if (data.registered) {
           this.auth.login(newUser.username, newUser.password).subscribe(data => {
             this.app.message="You have been registered!";
-            this.router.navigate(['/home']);
+            this.router.navigate(['/bank']);
           });
         } else {
           this.invalid = true;

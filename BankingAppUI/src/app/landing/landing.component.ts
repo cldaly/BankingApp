@@ -22,7 +22,7 @@ export class LandingComponent implements OnInit {
     if (this.currentUser && this.currentUser.account === 'admin' ) {
       this.router.navigate(['/admin']);
     } else if (this.currentUser) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/bank']);
     } else {
       this.app.message = null;
     }

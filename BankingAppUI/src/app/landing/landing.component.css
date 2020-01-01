@@ -1,11 +1,15 @@
 .loginButtons button {
     margin: 0 10px;
+    letter-spacing: 0.05em;
 }
 
 .landing-page {
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
 
 .landing-page h4 {
     margin: 20px auto;
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
 }

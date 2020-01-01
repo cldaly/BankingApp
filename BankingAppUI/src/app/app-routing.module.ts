@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'bank', component: HomeComponent },
   { path: 'admin', component: AdminComponent }
 ];
 

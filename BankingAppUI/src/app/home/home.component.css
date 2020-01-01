@@ -11,10 +11,10 @@
     /* border: 1px solid #a6acbc; */
     background-color: #f9f9f9;
     border-radius: 10px;
-    width: 500px;
+    width: 550px;
     margin: 40px auto;
-    padding: 0 25px 25px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.15);
+    padding: 20px 40px 40px;
+    box-shadow: 10px 10px 40px rgba(0,0,0,0.08), 2px 2px 8px rgba(0,0,0,0.2);
 }
 
 .user-actions tr {
@@ -22,14 +22,16 @@
 }
 
 .user-actions td {
-    font-size: 0.9em;
-    padding: 10px 15px;
+    font-size: 1em;
+    padding: 15px 20px;
 }
 
 .user-actions .action-head {
     text-align: left;
-    font-size: 1.1em;
-    padding: 25px 5px 5px;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+    padding: 25px 0 10px;
+    border-bottom: 2px solid #d9e1f4;
 }
 
 .user-actions button {
