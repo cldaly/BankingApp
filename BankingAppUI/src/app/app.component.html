@@ -1,7 +1,7 @@
 <header>
   <h2><a [routerLink]="['/']">My Banking App</a></h2>
   <nav>
-    <li *ngIf="!currentUser"><a [routerLink]="['/login']"  routerLinkActive="true">Sign in</a></li>
+    <li *ngIf="!currentUser"><a [routerLink]="['/login']"  routerLinkActive="true">Login</a></li>
     <li *ngIf="!currentUser"><a [routerLink]="['/register']" routerLinkActive="true" >Register</a></li>
     <li *ngIf="currentUser"><a (click)="logout()">Logout</a></li>
   </nav>

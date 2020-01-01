@@ -1,10 +1,18 @@
 <div class="home">
     <h2>Welcome to My Banking App, {{ currentUser.name }}</h2>
-    <ng-template *ngIf="currentUser.status !== 'pending';else pending">
-        <p>Your accout is good to go!</p>
+    <div *ngIf="currentUser.status === 'open'; then open else notOpen"></div>
+    <ng-template #open>
+        <table>
+            
+        </table>
     </ng-template>
-    <ng-template #pending>
-        <p>Your account status is currently is pending and waiting for approval. Please try back in a few moments!</p>
+    <ng-template #notOpen>
+        <div *ngIf="currentUser.status === 'pending'">
+            <p>Your account status is currently is pending and waiting for approval. Please try back in a few moments!</p>
+        </div>
+        <div *ngIf="currentUser.status === 'closed'">
+            <p>Sorry, your account has been closed (awkward...)</p>
+        </div>
     </ng-template>
 </div>
 
