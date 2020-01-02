@@ -7,7 +7,6 @@
   </nav>
 </header>
 <div class="main">
-  <h2>Welcome to My Banking App<span *ngIf="currentUser">, {{ currentUser.name }}</span>!</h2>
   <div *ngIf="message" class="message" (click)="close()">
     <p>{{ message }}</p>
     <i class="material-icons">close</i>

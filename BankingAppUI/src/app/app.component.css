@@ -1,12 +1,6 @@
 .main {
-    margin-top: 10vh;
+    margin-top: 12vh;
     text-align: center;
-}
-
-.main h2 {
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    font-size: 2em;
 }
 
 ul, nav {
@@ -28,7 +22,7 @@ a:hover {
 
 header {
     position: absolute;
-    height: 6vh;
+    height: 7vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -38,6 +32,12 @@ header {
     background-color: #ffdd9e;
     z-index: 1;
     opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 0 50px;
+    }
 }
 
 header h2 {
