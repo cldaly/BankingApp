@@ -22,10 +22,19 @@ export class AppComponent {
   logout(){
     this.auth.logout();
     this.router.navigate(['/login']);
-    this.message = "You have been logged out!";
+    this.displayMessage("You have been logged out!",10);
   }
 
   close(){
     this.message = null;
+  }
+
+  displayMessage(message: string, seconds: number) {
+    this.message = message;
+    if (seconds > 0 ) {
+      setTimeout(()=> {
+        this.message = null;
+      }, seconds * 1000);
+    }
   }
 }
