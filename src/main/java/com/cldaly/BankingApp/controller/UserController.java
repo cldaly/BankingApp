@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cldaly.BankingApp.model.RegisterStatus;
 import com.cldaly.BankingApp.model.User;
-import com.cldaly.BankingApp.model.UserPswd;
+import com.cldaly.BankingApp.model.UsernamePassword;
 import com.cldaly.BankingApp.service.UserService;
 
 @RestController
@@ -39,7 +39,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/authenticate")
-	public User authenticateUser(@RequestBody UserPswd input) {
+	public User authenticateUser(@RequestBody UsernamePassword input) {
 		return userService.authenticate(input.getUsername(), input.getPassword());
 	}
 

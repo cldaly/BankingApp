@@ -1,15 +1,15 @@
 package com.cldaly.BankingApp.model;
 
-public class UserPswd {
+public class UsernamePassword {
 	private String username;
 	private String password;
 	
-	private UserPswd(String username, String password) {
+	private UsernamePassword(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
 	
-	private UserPswd() { }
+	private UsernamePassword() { }
 	
 	public String getUsername() { return username; }
 	public String getPassword() { return password; }
