@@ -29,12 +29,15 @@ export class AppComponent {
     this.message = null;
   }
 
+  displayTimeout;
+
   displayMessage(message: string, seconds: number) {
-    this.message = message;
-    if (seconds > 0 ) {
-      setTimeout(()=> {
-        this.message = null;
-      }, seconds * 1000);
-    }
+    if (this.display !== null) {
+      clearTimeout(this.displayTimeout);
+    } 
+    this.display = message;
+    this.displayTimeout = setTimeout(()=>{
+      this.close();
+    }, seconds * 1000);
   }
 }
