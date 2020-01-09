@@ -1,15 +1,8 @@
-package com.cldaly.BankingApp.model;
+package com.cldaly.BankingApp.dto;
 
-public class UsernamePassword {
+public class AuthenticationRequest {
 	private String username;
 	private String password;
-	
-	private UsernamePassword(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-	
-	private UsernamePassword() { }
 	
 	public String getUsername() { return username; }
 	public String getPassword() { return password; }

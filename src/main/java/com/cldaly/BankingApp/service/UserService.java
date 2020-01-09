@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.cldaly.BankingApp.model.RegisterStatus;
 import com.cldaly.BankingApp.model.User;
 import com.cldaly.BankingApp.repository.UserRepository;
 
@@ -22,6 +23,16 @@ public class UserService {
 		return userRepo.findById(id);
 	}
 	
+	// Get user by username
+	public Optional<User> getUserByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
+	
+	// Get user by email
+	public Optional<User> getUserByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
+	
 	// Get a list of all users
 	public List<User> getUserList() {
 		List<User> users = new ArrayList<User>();
@@ -30,27 +41,19 @@ public class UserService {
 	}
 	
 	// Add a new user to database
-	public RegisterStatus saveUser(User user) {
-		List<User> users = this.getUserList();
-		for (User u : users) {
-			if (user.getEmail().equals(u.getEmail())) 
-				return new RegisterStatus(false, "Email '" +user.getEmail()+ "'  already taken");
-			if (user.getUsername().equals(u.getUsername()))
-				return new RegisterStatus(false, "Username '" + user.getUsername() + "' already taken");
+	public void saveUser(User user) throws AuthenticationException {
+		if (getUserByUsername(user.getUsername()).isPresent()) {
+			throw new AuthenticationException("Username already taken");
 		}
+		if (getUserByEmail(user.getEmail()).isPresent()) {
+			throw new AuthenticationException("Email is already taken");
+		}
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		String hash = encoder.encode(user.getPassword());
+		user.setPassword(hash);
+
 		userRepo.save(user);
-		return new RegisterStatus(true, "Success!");
 	}
 	
-	// authenticate user
-	public User authenticate(String username, String password){
-		List<User> users = this.getUserList();
-		for (User u : users) {
-			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-				u.setToken("access-token");
-				return u;
-			}
-		}
-		return null;
-	}
 }

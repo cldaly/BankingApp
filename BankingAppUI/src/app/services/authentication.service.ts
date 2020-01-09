@@ -22,7 +22,7 @@ export class AuthenticationService {
 
   login(username:string, password:string) {
     return this.http.post<any>('http://localhost:8080/users/authenticate',{ username, password }).pipe(map(user => {
-      if (user && user.token) {
+      if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
       }

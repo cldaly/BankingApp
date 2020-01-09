@@ -14,12 +14,11 @@ public class User {
 	private String name, username, password, email, address, account, status;
 	private Double balance;
 	private Long numOfChecks;
-	private String token;
 	
 	public User() { }
 	
 	public User(Long id, String name, String username, String password, String email, String address, String account,
-			String status, Double balance, Long numOfChecks, String token) {
+			String status, Double balance, Long numOfChecks) {
 		this.id = id;
 		this.name = name;
 		this.username = username;
@@ -30,7 +29,6 @@ public class User {
 		this.status = status;
 		this.balance = balance;
 		this.numOfChecks = numOfChecks;
-		this.token = token;
 	}
 
 	public Long getId() {
@@ -111,14 +109,6 @@ public class User {
 
 	public void setNumOfChecks(Long numOfChecks) {
 		this.numOfChecks = numOfChecks;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 	
 	

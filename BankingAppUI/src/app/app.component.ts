@@ -13,6 +13,8 @@ export class AppComponent {
   title = 'My Banking App';
   message:string = null;
 
+  display:string;
+
   constructor(private router:Router, private auth:AuthenticationService){
     this.auth.currentUser.subscribe(user => {
       this.currentUser = user;

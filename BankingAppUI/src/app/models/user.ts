@@ -9,7 +9,6 @@ export class User {
     status:string;
     balance:number;
     numOfChecks: number;
-    token:string;
 
     constructor(name: string,username:string, password:string, email:string, address:string, account:string) {
         this.id = 0;
@@ -22,6 +21,5 @@ export class User {
         this.status = "pending";
         this.balance = 0.00;
         this.numOfChecks = 10;
-        this.token = null;
     }
 }
