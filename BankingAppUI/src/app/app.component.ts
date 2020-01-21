@@ -33,7 +33,6 @@ export class AppComponent {
   displayTimeout;
 
   displayMessage(message: string, seconds: number) {
-    console.log(message)
     if (this.display !== null) {
       clearTimeout(this.displayTimeout);
     } 

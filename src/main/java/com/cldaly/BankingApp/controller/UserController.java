@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cldaly.BankingApp.dto.AuthenticationRequest;
@@ -42,7 +44,7 @@ public class UserController {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public List<User> getUsers() {
 		return userService.getUserList();
 	}
@@ -52,9 +54,10 @@ public class UserController {
 		userService.saveUser(user);
 	}
 	
-	@GetMapping("/{id}")
-	public Optional<User> getUsersById(@PathVariable("id") Long id) {
-		return userService.getUserById(id);
+	@GetMapping
+	public Optional<User> getUsersById(@RequestHeader("Authorization") String token) {
+		String username = jwtUtil.extractUsername(token.substring(7));
+		return userService.getUserByUsername(username);
 	}
 	
 	@PostMapping("/authenticate")
