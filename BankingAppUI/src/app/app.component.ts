@@ -11,7 +11,6 @@ import { AuthenticationService } from './services/authentication.service';
 export class AppComponent {
   currentUser:User;
   title = 'My Banking App';
-  message:string = null;
 
   display:string;
 
@@ -28,12 +27,13 @@ export class AppComponent {
   }
 
   close(){
-    this.message = null;
+    this.display = null;
   }
 
   displayTimeout;
 
   displayMessage(message: string, seconds: number) {
+    console.log(message)
     if (this.display !== null) {
       clearTimeout(this.displayTimeout);
     } 

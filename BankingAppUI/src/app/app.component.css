@@ -57,7 +57,7 @@ header nav li {
     margin: 0 15px;
 }
 
-.message {
+.display {
     margin: 0 auto;
     padding: 10px 20px;
     margin: 15px auto -10px;
@@ -73,7 +73,7 @@ header nav li {
 }
   
   
-.message i {
+.display i {
     margin-right:-5px;
     cursor: pointer;
 }

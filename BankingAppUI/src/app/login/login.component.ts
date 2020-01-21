@@ -52,13 +52,12 @@ export class LoginComponent implements OnInit {
           this.app.displayMessage("You have been logged in!", 10);
           this.router.navigate(['/']);
         } else {
-          this.app.message = null;
           this.invalid = true;
           this.message = "Invalid Username or Password";
         }
       }, error => {
         this.invalid = true;
-        this.message = "Something Went Wrong...";
+        this.message = "Invalid Username or Password";
       });
       this.loading = false;
     }

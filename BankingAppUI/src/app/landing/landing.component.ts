@@ -24,7 +24,7 @@ export class LandingComponent implements OnInit {
     } else if (this.currentUser) {
       this.router.navigate(['/bank']);
     } else {
-      this.app.message = null;
+      this.router.navigate(['/login']);
     }
   }
 
