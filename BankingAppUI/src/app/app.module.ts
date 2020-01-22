@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +17,7 @@ import { LandingComponent } from './landing/landing.component';
 import { AuthenticationService } from './services/authentication.service';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,12 @@ import { AdminComponent } from './admin/admin.component';
     MatIconModule,
     MatSelectModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    { 
+      provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true 
+    },
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

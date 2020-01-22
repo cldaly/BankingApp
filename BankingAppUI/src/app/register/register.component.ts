@@ -34,6 +34,10 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  close() {
+    this.invalid = false;
+  }
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name : ['', Validators.required],
@@ -66,19 +70,14 @@ export class RegisterComponent implements OnInit {
         this.registerForm.value.account
       );
       this.userService.register(newUser).subscribe(data => {
-        if (data.registered) {
-          this.auth.login(newUser.username, newUser.password).subscribe(data => {
-            this.app.displayMessage("You have been registered!",10);
-            this.router.navigate(['/bank']);
-          });
-        } else {
-          this.invalid = true;
-          this.message = data.message;
-        }
+        this.auth.login(newUser.username, newUser.password).subscribe(data => {
+          this.app.displayMessage("You have been registered!",10);
+          this.router.navigate(['/bank']);
+        });
       }, error => {
         console.log(error);
         this.invalid = true;
-        this.message = "Something went wrong";
+        this.message = error.error.message;
       })
     }
     this.loading = false;
