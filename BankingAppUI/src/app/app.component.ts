@@ -23,7 +23,7 @@ export class AppComponent {
   logout(){
     this.auth.logout();
     this.router.navigate(['/login']);
-    this.displayMessage("You have been logged out!",10);
+    this.displayMessage("You have been logged out!",5);
   }
 
   close(){

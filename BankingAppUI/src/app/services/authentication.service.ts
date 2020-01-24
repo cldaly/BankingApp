@@ -22,6 +22,7 @@ export class AuthenticationService {
   }
 
   login(username:string, password:string) {
+    localStorage.removeItem('token')
     return this.http.post<any>('http://localhost:8080/users/authenticate',{ username, password }).pipe(map(data => {
       if (data) {
         localStorage.setItem('token', data['jwt']);

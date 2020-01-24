@@ -54,12 +54,13 @@ export class LoginComponent implements OnInit {
         } else {
           this.invalid = true;
           this.message = "Invalid Username or Password";
+          this.loading = false;
         }
       }, error => {
         this.invalid = true;
         this.message = "Invalid Username or Password";
+        this.loading = false;
       });
-      this.loading = false;
     }
   }
 
